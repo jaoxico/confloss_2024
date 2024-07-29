@@ -9,9 +9,9 @@
       "es2022",
       "DOM"
     ],
-    "baseUrl": "./src/"
+    "baseUrl": "./simple/src/"
   },
   "include": [
-    "./src/"
+    "./simple/src/"
   ]
 }
