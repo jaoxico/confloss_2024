@@ -5,6 +5,7 @@ import { createHash, randomUUID } from "node:crypto";
 import { SchemaRegistry, SchemaType } from "@kafkajs/confluent-schema-registry";
 import { RegisteredSchema } from "@kafkajs/confluent-schema-registry/dist/SchemaRegistry";
 import { readFileSync } from "fs";
+import { ConfluentSchemaRegistryValidationError } from "@kafkajs/confluent-schema-registry/dist/errors";
 
 const producer = KafkaConnection.producer({
   allowAutoTopicCreation: false,
@@ -37,6 +38,10 @@ server.on("request", async (req, res) => {
   req.on("data", (chunk) => {
     postedData += chunk.toString();
   });
+  req.on("error", (error) => {
+    console.log("error");
+    console.log(error);
+  });
   req.on("end", async () => {
     try {
       const parsedPostedData = JSON.parse(postedData.toString());
@@ -66,13 +71,22 @@ server.on("request", async (req, res) => {
         ],
       });
       await producer.disconnect();
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.write(
+        JSON.stringify({
+          data: "Mensagem adicionada ao tópico",
+        }),
+      );
     } catch (error) {
-      console.error(error);
+      res.writeHead(400, { "Content-Type": "text/plain" });
+      res.write((error as ConfluentSchemaRegistryValidationError).message);
+      console.log((error as ConfluentSchemaRegistryValidationError).message);
     }
-  });
-  req.on("end", async () => {
     res.end();
   });
+  // req.on("end", async () => {
+  //   res.end();
+  // });
 });
 server.listen(3000);
 console.log("http://localhos:3000");
