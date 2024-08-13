@@ -1,0 +1,29 @@
+{
+  "type": "record",
+  "namespace": "com.confloss_2024",
+  "name": "lectures",
+  "doc": "Tópico do conteúdo da confloss 20224.",
+  "fields": [
+    {
+      "name": "lecture",
+      "type": "string",
+      "doc": "Título da palestra"
+    },
+    {
+      "name": "content",
+      "type": "string",
+      "doc": "Texto descritivo do conteúdo da palestra."
+    },
+    {
+      "name": "speaker",
+      "type": "string",
+      "doc": "Nome do palestrante."
+    },
+    {
+      "name": "duration",
+      "type": "int",
+      "doc": "In hours",
+      "default": 0
+    }
+  ]
+}
