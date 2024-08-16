@@ -1,7 +1,6 @@
 import { KafkaConnection } from "../kafka/KafkaConnection";
-import { workingGroupId, workingTopic } from "../index";
+import { Event, workingGroupId, workingTopic } from "../index";
 import { SchemaRegistry } from "@kafkajs/confluent-schema-registry";
-import { EachMessagePayload } from "kafkajs";
 
 const consumer = KafkaConnection.consumer({
   groupId: workingGroupId,
@@ -16,9 +15,11 @@ const run = async () => {
   await consumer.subscribe({ topic: workingTopic, fromBeginning: true });
   await consumer.run({
     autoCommit: true,
-    eachMessage: async (event: EachMessagePayload) => {
+    eachMessage: async (event: Event) => {
       const { message } = event;
       const { value } = message;
+      console.log("raw message");
+      console.log(value);
       const decodedMessage = await registry.decode(value || Buffer.alloc(0));
       console.log("decodedMessage");
       console.log(decodedMessage);

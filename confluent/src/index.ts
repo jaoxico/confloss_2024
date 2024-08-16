@@ -1,9 +1,9 @@
 import { KafkaMessage } from "kafkajs";
 
-export const workingTopic = "confloss_2024";
-export const workingGroupId = "test-workingGroupId";
+export const workingTopic = "confluent_confloss_2024";
+export const workingGroupId = "confloss-workingGroupId";
 
-interface Event {
+export interface Event {
   topic: string;
   partition: number;
   message: KafkaMessage;
