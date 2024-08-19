@@ -5,3 +5,10 @@
 - ### [kafka puro](./simple/README.md)
 - ### [Confluent (schema registry)](./confluent/README.md)
 
+<br/>
+<br/>
+<br/>
+Sites oficiais
+
+* ##### [Apache Kafka](https://kafka.apache.org/)
+* ##### [Confluent](https://www.confluent.io/)
