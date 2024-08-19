@@ -29,7 +29,7 @@ server.on("listening", async () => {
 });
 server.on("request", async (req, res) => {
   if (req.method !== "POST") {
-    res.statusCode = 403;
+    res.writeHead(403, {'Content-type': 'text/plain'})
     res.write("Método não permitido!");
     res.end();
     return;
