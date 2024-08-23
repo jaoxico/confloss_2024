@@ -1,4 +1,4 @@
-# Confluent (schema registry)
+# Simple Kafka 
 
 Passo a passo para produzir e consumir mensagens usando o kafka puro.
 
