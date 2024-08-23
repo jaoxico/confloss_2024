@@ -2,6 +2,10 @@
 
 ### Mini tutorial kafka Confloss 2024
 
+- ### Installando dependências
+  ```bash
+  npm install
+  ```
 - ### [kafka puro](./simple/README.md)
 - ### [Confluent (schema registry)](./confluent/README.md)
 
