@@ -17,3 +17,4 @@ Sites oficiais
 * ##### [Instalando Docker Engine](https://docs.docker.com/engine/install/)
 * ##### [Apache Kafka](https://kafka.apache.org/)
 * ##### [Confluent](https://www.confluent.io/)
+* ##### [Apache AVRO](https://avro.apache.org/)
